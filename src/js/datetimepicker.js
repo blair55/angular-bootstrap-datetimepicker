@@ -241,7 +241,7 @@ angular.module('ui.bootstrap.datetimepicker', [])
           hour: function (unixDate) {
             var selectedDate = moment.utc(unixDate).hour(0).minute(0).second(0);
 
-            var activeFormat = scope.ngModel ? moment(scope.ngModel).format('YYYY-MM-DD H') : '';
+            var activeFormat = scope.ngModel ? moment(scope.ngModel).format('YYYY-MM-DD HH') : '';
 
             var result = {
               'previousView': 'day',
@@ -257,7 +257,7 @@ angular.module('ui.bootstrap.datetimepicker', [])
               var hourMoment = moment.utc(selectedDate).add(i, 'hours');
               var dateValue = {
                 'dateValue': hourMoment.valueOf(),
-                'display': hourMoment.format('LT'),
+                'display': hourMoment.format('HH:mm'),
                 'active': hourMoment.format('YYYY-MM-DD H') === activeFormat
               };
 
@@ -270,7 +270,7 @@ angular.module('ui.bootstrap.datetimepicker', [])
           minute: function (unixDate) {
             var selectedDate = moment.utc(unixDate).minute(0).second(0);
 
-            var activeFormat = scope.ngModel ? moment(scope.ngModel).format('YYYY-MM-DD H:mm') : '';
+            var activeFormat = scope.ngModel ? moment(scope.ngModel).format('YYYY-MM-DD HH:mm') : '';
 
             var result = {
               'previousView': 'hour',
@@ -288,8 +288,8 @@ angular.module('ui.bootstrap.datetimepicker', [])
               var hourMoment = moment.utc(selectedDate).add(i * configuration.minuteStep, 'minute');
               var dateValue = {
                 'dateValue': hourMoment.valueOf(),
-                'display': hourMoment.format('LT'),
-                'active': hourMoment.format('YYYY-MM-DD H:mm') === activeFormat
+                'display': hourMoment.format('HH:mm'),
+                'active': hourMoment.format('YYYY-MM-DD HH:mm') === activeFormat
               };
 
               result.dates.push(new DateObject(dateValue));
